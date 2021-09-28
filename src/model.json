@@ -1,0 +1,25 @@
+[
+  {
+    "name": "phones",
+    "categoryId": "phones",
+    "subCategory": [],
+    "description": "description",
+    "goods": []
+  },
+
+  {
+    "name": "Мобильный телефон Texet TM-513R (черно-оранжевый)",
+    "imageUrls": [
+      "https://cdn21vek.by/img/galleries/293/851/preview_b/tm513r_texet_560553f710b36.png",
+      "https://cdn21vek.by/img/galleries/293/851/preview_b/tm513r_texet_57c893d5f3bab.jpeg",
+      "https://cdn21vek.by/img/galleries/293/851/preview_b/tm513r_texet_57c893d61aa72.jpeg",
+      "https://cdn21vek.by/img/galleries/293/851/preview_b/tm513r_texet_56055427a4654.png"
+    ],
+    "category": [],
+    "subCategory": [],
+    "rating": 4,
+    "availableAmount": 19,
+    "price": 678.46,
+    "description": "consectetur laboris occaecat ipsum aliquip mollit deserunt irure Lorem sunt velit irure ad in mollit elit ex nulla fugiat aute est mollit culpa fugiat reprehenderit laborum anim cupidatat esse adipisicing veniam excepteur elit esse eiusmod adipisicing qui Lorem commodo pariatur"
+  }
+]

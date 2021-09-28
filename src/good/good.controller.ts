@@ -9,10 +9,11 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
+  Query,
 } from '@nestjs/common';
 import { GoodService } from './good.service';
-import { Good } from '../../entities/Good';
-import { CreateUserDto } from '../../dto/user.dto';
+import { Good } from '../entities/Good';
+import { CreateGoodDto } from '../dto/good.dto';
 
 @Controller('goods')
 export class GoodController {
@@ -20,13 +21,24 @@ export class GoodController {
 
   @Get()
   @HttpCode(200)
-  async getGoods() {
-    const users = await this.goodService.getGoods();
+  async getGoods(@Query() query) {
+    const users = await this.goodService.getGoods(query);
 
     if (!users) {
       throw new HttpException('Not found!', HttpStatus.NOT_FOUND);
     }
     return users.map(Good.toResponse);
+  }
+
+  @Get('/search')
+  @HttpCode(200)
+  async getGoodsByName(@Query() query) {
+    const goods = await this.goodService.getGoodsByName(query);
+
+    if (!goods) {
+      throw new HttpException('Not found!', HttpStatus.NOT_FOUND);
+    }
+    return goods.map(Good.toResponse);
   }
 
   @Get(':id')
@@ -42,10 +54,10 @@ export class GoodController {
   @Post()
   @HttpCode(201)
   async createGood(
-    @Body() createUserDto: CreateUserDto,
+    @Body() CreateGoodDto: CreateGoodDto,
   ): Promise<Good | undefined> {
-    console.log(createUserDto);
-    const response = await this.goodService.createGood(createUserDto);
+    console.log(CreateGoodDto);
+    const response = await this.goodService.createGood(CreateGoodDto);
     if (!response) {
       throw new HttpException('Not found!', HttpStatus.NOT_FOUND);
     }
@@ -55,7 +67,7 @@ export class GoodController {
   @Put(':id')
   @HttpCode(200)
   updateGood(
-    @Body() updateGoodDto: CreateUserDto,
+    @Body() updateGoodDto: CreateGoodDto,
     @Param('id') id: string | undefined,
   ) {
     return this.goodService.updateGood(id, updateGoodDto);

@@ -1,4 +1,4 @@
-export class CreateUserDto {
+export class CreateGoodDto {
   id?: string;
   name: string;
   imageUrls: string[];

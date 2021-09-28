@@ -23,7 +23,7 @@ export class Good {
   @Column('int', { nullable: true })
   availableAmount: number;
 
-  @Column('int', { nullable: true })
+  @Column('decimal', { nullable: true })
   price: number;
 
   @Column('text', { nullable: true })

@@ -1,17 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, Connection } from 'typeorm';
-import { Good } from '../../entities/Good';
+import { Repository, getRepository } from 'typeorm';
+import { Good } from '../entities/Good';
+import { IQuery } from '../interfaces/interfaces';
 
 @Injectable()
 export class GoodService {
   constructor(
     @InjectRepository(Good) private readonly repo: Repository<Good>,
-    private connection: Connection,
   ) {}
 
-  async getGoods(): Promise<Good[]> {
-    return this.repo.find();
+  async getGoods(query: IQuery): Promise<Good[]> {
+    if (query.ids) {
+      const ids = query.ids.split(',');
+      const good = await getRepository(Good)
+        .createQueryBuilder('good')
+        .where('good.id IN (:...good)', {
+          good: ids,
+        })
+        .getMany();
+      return good;
+    } else {
+      return this.repo.find();
+    }
+  }
+
+  async getGoodsByName(query: IQuery) {
+    console.log(query);
+    const allGoods = await this.getGoods(query);
+    return allGoods.filter(
+      (item) => item.name.toLowerCase().indexOf(query.name.toLowerCase()) >= 0,
+    );
   }
 
   async getGood(id: string | undefined): Promise<Good | undefined> {

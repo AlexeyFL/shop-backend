@@ -3,14 +3,16 @@ import { ConfigModule } from '@nestjs/config';
 import ConnectionOptions from './ormconfig';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GoodController } from './good/good/good.controller';
-import { GoodService } from './good/good/good.service';
-import { GoodModule } from './good/good/good.module';
+import { GoodController } from './good/good.controller';
+import { GoodModule } from './good/good.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CategoryController } from './category/category.controller';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
     GoodModule,
+    CategoryModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -18,7 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       useFactory: () => ConnectionOptions,
     }),
   ],
-  controllers: [AppController, GoodController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
