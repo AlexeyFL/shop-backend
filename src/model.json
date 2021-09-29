@@ -21,5 +21,21 @@
     "availableAmount": 19,
     "price": 678.46,
     "description": "consectetur laboris occaecat ipsum aliquip mollit deserunt irure Lorem sunt velit irure ad in mollit elit ex nulla fugiat aute est mollit culpa fugiat reprehenderit laborum anim cupidatat esse adipisicing veniam excepteur elit esse eiusmod adipisicing qui Lorem commodo pariatur"
+  },
+  {
+    "firstName": "Andre",
+    "lastName": "Sokolov",
+    "token": "token",
+    "login": "login",
+    "password": "pass",
+    "cart": [],
+    "favorites": [],
+    "orders": []
+  },
+  {
+    "firstName": "Andre",
+    "lastName": "Sokolov",
+    "login": "login",
+    "password": "pass"
   }
 ]
